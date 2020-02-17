@@ -36,6 +36,9 @@ namespace RefactorShapes
             }
             return sRet;
         }
+        // JLM: Deja un espacio en blanco entre métodos
+        // JLM: No uses mátodos privados que tengan lógica porque no se puede escribir tests sobre ellos. 
+        // JLM: Mueve esos métodos a otra clase y hazlos públicos
         private string GetNameOfShapes()
         {
             string sRet = "";
@@ -81,6 +84,10 @@ namespace RefactorShapes
         {
             if (Lshapes.Count > 0)
             {
+                // JLM: El coste computacional de este algoritmo es n2 - https://stackoverflow.com/questions/526728/time-complexity-of-nested-for-loop
+                // JLM: Intenta usar LINQ con expresiones Lambda. El segundo for se puede sustituir por .FirstORDefault() para reducir el coste computacional
+                // JLM: Los Dictionary son de acceso mucho más rápido que las List, ya que Dictionary se basa en HashTable. Yo miraría si se puede hacer algo con ellos
+                // JLM: para este y otros bucles anidados
                 for (int iShapeName = 0; iShapeName < LshapesName.Count; iShapeName++)
                 {
                     for (int iShapes = 0; iShapes < Lshapes.Count; iShapes++)
